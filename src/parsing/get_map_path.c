@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_map_path.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdhallen <jdhallen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 13:12:09 by jdhallen          #+#    #+#             */
-/*   Updated: 2025/03/24 13:14:46 by jdhallen         ###   ########.fr       */
+/*   Updated: 2025/03/25 15:36:34 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,14 @@ int	check_file_type(t_game *game)
 int	get_map_path(t_game *game, int argc, char **argv)
 {
 	if (argc != 2)
-		return (ft_printf(2, "Error\nWrong number of arg\n"), FALSE);
+		return (ft_printf(2, "Error\nFile needed : <map_path.cub>\n"), FALSE);
 	game->map_path = ft_strdup(argv[1]);
+	if (!game->map_path)
+		return (ft_printf(2, "Error\nMemory allocation failed\n"), FALSE);
 	if (!check_file_type(game))
-		return (FALSE);
+		return (free(game->map_path), FALSE);
 	game->map_fd = open(game->map_path, O_RDONLY);
 	if (game->map_fd == ERROR)
-		return (FALSE);
+		return (free(game->map_path), FALSE);
 	return (TRUE);
 }

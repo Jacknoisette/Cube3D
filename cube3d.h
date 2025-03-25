@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdhallen <jdhallen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 13:13:39 by jdhallen          #+#    #+#             */
-/*   Updated: 2025/03/24 16:04:22 by jdhallen         ###   ########.fr       */
+/*   Updated: 2025/03/25 14:27:20 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,32 @@
 #  define FOV 90
 # endif
 
+//MAP
+
+# ifndef WALL
+#  define WALL '1'
+# endif
+
+# ifndef VOID
+#  define VOID '0'
+# endif
+
+# ifndef NORTH
+#  define NORTH 'N'
+# endif
+
+# ifndef SOUTH
+#  define SOUTH 'S'
+# endif
+
+# ifndef WEST
+#  define WEST 'W'
+# endif
+
+# ifndef EAST
+#  define EAST 'E'
+# endif
+
 typedef enum e_move
 {
 	NULL_KEY,
@@ -56,14 +82,21 @@ typedef enum e_move
 	ESC_KEY,
 }	t_move;
 
+typedef enum e_info_texture
+{
+	NO,
+	SO,
+	WE,
+	EA,
+	F,
+	C,
+}	t_info_texture;
+
 //STRUCT
 
 typedef struct s_texture
 {
-	char	*north_texture;
-	char	*south_texture;
-	char	*west_texture;
-	char	*east_texture;
+	char	*wall_texture[4];
 	int		floor_color;
 	int		ceiling_color;
 }	t_texture;
@@ -90,6 +123,7 @@ typedef struct s_game
 	void		*window;
 	int			keycode;
 	int			map_fd;
+	int			start_map_line;
 }	t_game;
 
 int	parsing(t_game *game, int argc, char **argv);

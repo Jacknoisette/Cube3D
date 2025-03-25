@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   access_image.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/24 15:59:13 by jdhallen          #+#    #+#             */
-/*   Updated: 2025/03/25 12:39:51 by codespace        ###   ########.fr       */
+/*   Created: 2025/03/25 15:54:34 by codespace         #+#    #+#             */
+/*   Updated: 2025/03/25 16:03:57 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CORE_H
-# define CORE_H
+#include "../cube3d.h"
+#include "parsing.h"
 
-#include "stdlib.h"
+int access_image(t_game *game)
+{
+	int	fd;
+	int	i;
 
-typedef struct s_map t_map;
-
-//CLEANING
-void	free_charpp(char **str);
-void	free_mappp(t_map **map);
-
-#endif
+	i = 0;
+	while (i < 4)
+	{
+		fd = open(game->texture.wall_texture[i], O_RDONLY);
+		if (fd == -1)
+			return (ft_printf(2, "Error\nWall texture not found\n"), FALSE);
+		close(fd);
+		i++;
+	}
+	return (TRUE);
+}

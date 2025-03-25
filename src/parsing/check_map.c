@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/24 15:59:13 by jdhallen          #+#    #+#             */
-/*   Updated: 2025/03/25 12:39:51 by codespace        ###   ########.fr       */
+/*   Created: 2025/03/25 14:16:15 by codespace         #+#    #+#             */
+/*   Updated: 2025/03/25 15:04:35 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CORE_H
-# define CORE_H
+#include "../cube3d.h"
+#include "parsing.h"
 
-#include "stdlib.h"
-
-typedef struct s_map t_map;
-
-//CLEANING
-void	free_charpp(char **str);
-void	free_mappp(t_map **map);
-
-#endif
+int	check_map(t_game *game)
+{
+	if (check_map_char(game) == ERROR)
+		return (ERROR);
+	if (check_map_wall(game) == ERROR)
+		return (ERROR);
+    return (TRUE);
+}
