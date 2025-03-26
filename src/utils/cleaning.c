@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cleaning.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jdhallen <jdhallen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 15:56:10 by jdhallen          #+#    #+#             */
-/*   Updated: 2025/03/25 12:39:01 by codespace        ###   ########.fr       */
+/*   Updated: 2025/03/26 16:15:15 by jdhallen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	free_charpp(char **str)
 {
 	int	i;
-	
+
 	if (str == NULL)
 		return ;
 	i = 0;
@@ -28,19 +28,25 @@ void	free_charpp(char **str)
 	str = NULL;
 }
 
-
-void	free_mappp(t_map **map)
+void	free_mappp(t_map ***map)
 {
 	int	i;
-	
-	if (map == NULL)
+
+	if (*map == NULL)
 		return ;
 	i = 0;
-	while (map[i] != NULL)
+	while ((*map)[i] != NULL)
 	{
-		free(map[i]);
+		free((*map)[i]);
+		(*map)[i] = NULL;
 		i++;
 	}
-	free(map);
-	map = NULL;
+	free(*map);
+	*map = NULL;
+}
+
+void	free_img(void *mlx, void *img)
+{
+	if (img != NULL)
+		mlx_destroy_image(mlx, img);
 }

@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   access_image.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jdhallen <jdhallen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:54:34 by codespace         #+#    #+#             */
-/*   Updated: 2025/03/25 16:03:57 by codespace        ###   ########.fr       */
+/*   Updated: 2025/03/26 16:11:13 by jdhallen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cube3d.h"
 #include "parsing.h"
 
-int access_image(t_game *game)
+int	access_image(t_game *game)
 {
 	int	fd;
 	int	i;

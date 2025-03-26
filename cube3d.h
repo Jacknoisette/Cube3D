@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jdhallen <jdhallen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 13:13:39 by jdhallen          #+#    #+#             */
-/*   Updated: 2025/03/25 14:27:20 by codespace        ###   ########.fr       */
+/*   Updated: 2025/03/26 16:37:30 by jdhallen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include "Libft/ft_printf/ft_printf.h"
 # include "Libft/get_next_line/get_next_line.h"
 # include "src/utils/utils.h"
+# include <stdbool.h>
 # include <math.h>
 
 //BASE
@@ -42,6 +43,14 @@
 
 # ifndef FOV
 #  define FOV 90
+# endif
+
+# ifndef WIDTH
+#  define WIDTH 1920
+# endif
+
+# ifndef HEIGHT
+#  define HEIGHT 1080
 # endif
 
 //MAP
@@ -96,6 +105,9 @@ typedef enum e_info_texture
 
 typedef struct s_texture
 {
+	void	*ceiling_image;
+	void	*floor_image;
+	void	**wall_images;
 	char	*wall_texture[4];
 	int		floor_color;
 	int		ceiling_color;
@@ -104,13 +116,14 @@ typedef struct s_texture
 typedef struct s_map
 {
 	char	type;
+	bool	in_player_map;
 }	t_map;
 
 typedef struct s_player
 {
-	double x;
-	double y;
-	double angle;
+	double	x;
+	double	y;
+	double	angle;
 }	t_player;
 
 typedef struct s_game
@@ -121,11 +134,21 @@ typedef struct s_game
 	char		*map_path;
 	void		*session;
 	void		*window;
+	bool		error_in_walls;
 	int			keycode;
 	int			map_fd;
 	int			start_map_line;
 }	t_game;
 
-int	parsing(t_game *game, int argc, char **argv);
+//UTILS
+void	clean_game(t_game *game);
+int		close_window(t_game *game);
+int		create_ceilling_and_floor(t_game *game);
+
+//MAIN
+int		keycode_value(int keycode, t_game *game);
+int		parsing(t_game *game, int argc, char **argv);
+int		exec(t_game *game);
+int		exec_init(t_game *game);
 
 #endif

@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   get_map_info_getter.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jdhallen <jdhallen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 14:07:09 by jdhallen          #+#    #+#             */
-/*   Updated: 2025/03/25 14:49:40 by codespace        ###   ########.fr       */
+/*   Updated: 2025/03/26 16:20:04 by jdhallen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cube3d.h"
 #include "parsing.h"
 
-int get_info_texture(char *line)
+int	get_info_texture(char *line)
 {
 	int	i;
 
@@ -35,7 +35,7 @@ int get_info_texture(char *line)
 	return (ERROR);
 }
 
-int get_start(char *line)
+int	get_start(char *line)
 {
 	int	i;
 
@@ -49,7 +49,7 @@ int get_start(char *line)
 	return (i);
 }
 
-int get_len(char *line)
+int	get_len(char *line)
 {
 	int	i;
 	int	start;
@@ -64,14 +64,14 @@ int get_len(char *line)
 int	check_rgb(char **color_group, int *rgb)
 {
 	int		color;
-	int	i;
+	int		i;
 
 	i = 0;
 	while (i < 3)
 	{
 		if (color_group[i] == NULL)
 			return (ft_printf(2, "Error\nWrong Color\n"), ERROR);
-		rgb[i] = atoi(color_group[i]);
+		rgb[i] = ft_atoi(color_group[i]);
 		if (rgb[i] < 0 || rgb[i] > 255)
 			return (ft_printf(2, "Error\nWrong Color\n"), ERROR);
 		i++;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_map_info.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jdhallen <jdhallen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 16:08:55 by jdhallen          #+#    #+#             */
-/*   Updated: 2025/03/25 11:11:47 by codespace        ###   ########.fr       */
+/*   Updated: 2025/03/26 16:20:15 by jdhallen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ int	check_line(char *line)
 
 int	create_data(t_game *game, char **data, int *info)
 {
-	char *line;
-	
+	char	*line;
+
 	line = get_next_line(game->map_fd);
 	game->start_map_line++;
 	while (check_empty_line(line) == FALSE)
@@ -55,10 +55,10 @@ int	create_data(t_game *game, char **data, int *info)
 		game->start_map_line++;
 	}
 	if (check_empty_line(line) == ERROR)
-		return (ft_printf(2, "Error\nEOF before map\n"),
+		return (ft_printf(2, "Error\nEOF before map cd\n"),
 			free(line), ERROR);
 	if (check_line(line) == ERROR)
-		return (ft_printf(2, "Error\nWrong line in map\n"),
+		return (ft_printf(2, "Error\nWrong line in map cd2\n"),
 			free(line), ERROR);
 	*info = get_info_texture(line);
 	if (*info == ERROR)

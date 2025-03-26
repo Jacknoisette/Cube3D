@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_map_path.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jdhallen <jdhallen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 13:12:09 by jdhallen          #+#    #+#             */
-/*   Updated: 2025/03/25 15:36:34 by codespace        ###   ########.fr       */
+/*   Updated: 2025/03/26 16:16:52 by jdhallen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	check_file_type(t_game *game)
 		if (game->map_path[i] == '.' && game->map_path[i + 1] == 'c'
 			&& game->map_path[i + 2] == 'u' && game->map_path[i + 3] == 'b'
 			&& game->map_path[i + 4] == '\0')
-		return (TRUE);
+			return (TRUE);
 		i++;
 	}
 	ft_printf(2, "Error\nMap not .cub\n");

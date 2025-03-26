@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jdhallen <jdhallen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 12:50:21 by jdhallen          #+#    #+#             */
-/*   Updated: 2025/03/25 16:03:03 by codespace        ###   ########.fr       */
+/*   Updated: 2025/03/26 16:03:43 by jdhallen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 int	init(t_game *game)
 {
+	game->map = NULL;
+	game->map_path = NULL;
 	game->map_fd = -1;
 	game->keycode = NULL_KEY;
 	game->texture.wall_texture[NO] = NULL;
@@ -23,7 +25,11 @@ int	init(t_game *game)
 	game->texture.wall_texture[EA] = NULL;
 	game->texture.floor_color = 0x0;
 	game->texture.ceiling_color = 0x0;
+	game->texture.floor_image = NULL;
+	game->texture.ceiling_image = NULL;
+	game->texture.wall_images = NULL;
 	game->start_map_line = 0;
+	game->error_in_walls = false;
 	return (TRUE);
 }
 

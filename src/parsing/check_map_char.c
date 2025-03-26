@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_char.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jdhallen <jdhallen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 14:58:32 by codespace         #+#    #+#             */
-/*   Updated: 2025/03/25 16:13:03 by codespace        ###   ########.fr       */
+/*   Updated: 2025/03/26 16:31:10 by jdhallen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	check_char(t_game *game, int *i, int *j, int *player)
 		|| game->map[*i][*j].type == WALL
 		|| game->map[*i][*j].type == ' ')
 		return ((*j)++, TRUE);
-	else if	(game->map[*i][*j].type == NORTH 
+	else if (game->map[*i][*j].type == NORTH
 		|| game->map[*i][*j].type == SOUTH
 		|| game->map[*i][*j].type == WEST
 		|| game->map[*i][*j].type == EAST)
@@ -49,7 +49,7 @@ int	check_map_char(t_game *game)
 		j = 0;
 		while (game->map[i][j].type != '\0')
 		{
-			if (check_char(game, &i, &j , &player) == ERROR)
+			if (check_char(game, &i, &j, &player) == ERROR)
 				return (ERROR);
 		}
 		i++;

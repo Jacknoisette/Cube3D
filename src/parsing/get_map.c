@@ -3,36 +3,55 @@
 /*                                                        :::      ::::::::   */
 /*   get_map.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jdhallen <jdhallen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 13:15:45 by jdhallen          #+#    #+#             */
-/*   Updated: 2025/03/25 15:14:23 by codespace        ###   ########.fr       */
+/*   Updated: 2025/03/26 16:24:11 by jdhallen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cube3d.h"
 #include "parsing.h"
 
-int	get_map(t_game *game)
+void	display_info(t_game *game)
 {
-	if (get_map_info(game) == ERROR)
-		return (FALSE);
+	int	i;
+	int	j;
+
 	ft_printf(1, "NO = %s\n", game->texture.wall_texture[NO]);
 	ft_printf(1, "SO = %s\n", game->texture.wall_texture[SO]);
 	ft_printf(1, "WE = %s\n", game->texture.wall_texture[WE]);
 	ft_printf(1, "EA = %s\n", game->texture.wall_texture[EA]);
 	ft_printf(1, "F = 0x%X\n", game->texture.floor_color);
-	ft_printf(1, "C = 0x%X\n", game->texture.ceiling_color);
+	ft_printf(1, "C = 0x%X\n\n", game->texture.ceiling_color);
+	i = 0;
+	while (game->map[i] != NULL)
+	{
+		j = 0;
+		while (game->map[i][j].type != '\0')
+		{
+			if (game->map[i][j].in_player_map)
+				ft_printf(1, "\033[32m\033[1m");
+			if (!game->map[i][j].in_player_map && game->map[i][j].type == VOID)
+				ft_printf(1, "\033[34m");
+			ft_printf(1, "%c\033[0m", game->map[i][j].type);
+			j++;
+		}
+		ft_printf(1, "\n");
+		i++;
+	}
+}
+
+int	get_map(t_game *game)
+{
+	if (get_map_info(game) == ERROR)
+		return (FALSE);
 	if (get_map_parsing(game) == ERROR)
 		return (FALSE);
-	for (int i = 0; game->map[i] != NULL; i++)
-	{
-		for (int j = 0; game->map[i][j].type != '\0'; j++)
-			ft_printf(1, "%c", game->map[i][j].type);
-		ft_printf(1, "\n");
-	}
 	ft_printf(1, "Actually get_line is at line : %i\n", game->start_map_line);
-	if (check_map(game) == ERROR)
+	if (check_map(game, 0) == ERROR)
 		return (FALSE);
+	display_info(game);
+	ft_printf(1, "\n");
 	return (TRUE);
 }
