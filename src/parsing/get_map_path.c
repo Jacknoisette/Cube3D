@@ -6,7 +6,7 @@
 /*   By: jdhallen <jdhallen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 13:12:09 by jdhallen          #+#    #+#             */
-/*   Updated: 2025/03/26 16:16:52 by jdhallen         ###   ########.fr       */
+/*   Updated: 2025/03/27 13:00:31 by jdhallen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ int	get_map_path(t_game *game, int argc, char **argv)
 	if (!game->map_path)
 		return (ft_printf(2, "Error\nMemory allocation failed\n"), FALSE);
 	if (!check_file_type(game))
-		return (free(game->map_path), FALSE);
+		return (FALSE);
 	game->map_fd = open(game->map_path, O_RDONLY);
 	if (game->map_fd == ERROR)
-		return (free(game->map_path), FALSE);
+		return (FALSE);
 	return (TRUE);
 }
