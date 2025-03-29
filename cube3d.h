@@ -35,14 +35,22 @@
 #  define ERROR -1
 # endif
 
+
+//PLAYER
+
+# ifndef FOV
+#  define FOV 75
+# endif
+
+# define ROT_MAX 360
+
+# define ROT_SPEED
+
+
 //CUBE3D
 
 # ifndef SIZE
 #  define SIZE 32
-# endif
-
-# ifndef FOV
-#  define FOV 90
 # endif
 
 # ifndef WIDTH
@@ -82,12 +90,12 @@
 typedef enum e_move
 {
 	NULL_KEY,
-	W_KEY,
-	A_KEY,
-	S_KEY,
-	D_KEY,
-	LEFT_ARROW_KEY,
-	RIGHT_ARROW_KEY,
+	W_KEY = 119,
+	A_KEY = 97,
+	S_KEY = 115,
+	D_KEY = 100,
+	LEFT_KEY = 65361,
+	RIGHT_KEY = 65363,
 	ESC_KEY,
 }	t_move;
 
@@ -117,6 +125,7 @@ typedef struct s_map
 {
 	char	type;
 	bool	in_player_map;
+	char	**grid;
 }	t_map;
 
 typedef struct s_player
