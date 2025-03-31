@@ -35,6 +35,7 @@
 #  define ERROR -1
 # endif
 
+# define PI 3,1415926535
 
 //PLAYER
 
@@ -148,6 +149,8 @@ typedef struct s_game
 	int			map_fd;
 	int			start_map_line;
 }	t_game;
+
+# include "src/exec/exec.h"
 
 //UTILS
 void	clean_game(t_game *game);

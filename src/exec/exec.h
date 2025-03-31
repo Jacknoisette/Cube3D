@@ -13,7 +13,9 @@
 #ifndef EXEC_H
 # define EXEC_H
 
+#include "../cube3d.h"
 //EXEC
+void	move_key(t_game *game, int input);
 int	exec_init(t_game *game);
 int	exec(t_game *game);
 int	player_move(t_game *game);

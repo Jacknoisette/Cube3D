@@ -34,7 +34,6 @@ int	check_arg(char *argv, char *ext)
 		else
 			return (ft_printf(2, "Error: wrong file2\n"), 0);
 	}
-	printf("ouais\n");
 	return (1);
 }
 
@@ -55,7 +54,7 @@ int	main(int argc, char **argv)
 		return (clean_game(&game), ERROR);
 	mlx_hook(game.window, 17, 0, close_window, &game);
 	// mlx_loop_hook(game.session, , &game);
-	mlx_key_hook(game.window, keycode_value, &game);
+	mlx_hook(game.window, 2, (1L << 0), keycode_value, &game);
 	mlx_loop(game.session);
 	return (close_window(&game), 0);
 	}

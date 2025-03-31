@@ -13,9 +13,7 @@
 #include "../cube3d.h"
 #include "exec.h"
 
-
-
-static void	move_key_handler(t_game *game, int input)
+void	move_key(t_game *game, int input)
 {
 	if (input == W_KEY)
 	{
@@ -40,7 +38,7 @@ static void	move_key_handler(t_game *game, int input)
 	else if (input == LEFT_KEY)
 	{
 		printf("Left key presssed\n");
-		game->player.angle += ;
+		game->player.angle += 1 ;
 	}
 	else if (input == RIGHT_KEY)
 	{
