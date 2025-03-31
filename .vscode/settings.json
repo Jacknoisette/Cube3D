@@ -4,6 +4,7 @@
         "sstream": "c",
         "random": "c",
         "exec.h": "c",
-        "cube3d.h": "c"
+        "cube3d.h": "c",
+        "math.h": "c"
     }
 }

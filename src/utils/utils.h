@@ -6,7 +6,7 @@
 /*   By: jdhallen <jdhallen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 15:59:13 by jdhallen          #+#    #+#             */
-/*   Updated: 2025/03/26 16:14:57 by jdhallen         ###   ########.fr       */
+/*   Updated: 2025/03/31 14:53:36 by jdhallen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,12 @@ typedef struct s_image
 
 //IMAGE
 int		create_image(void *img_ptr, int width, int height, int color);
+int		create_imagef(void *img_ptr, int width, int height, int color);
+int		create_imagec(void *img_ptr, int width, int height, int color);
+
+void	draw_vertical_line(void *img_ptr, int x, int start,
+			int end, int color);
+
 
 //CLEANING
 void	free_img(void *mlx, void *img);

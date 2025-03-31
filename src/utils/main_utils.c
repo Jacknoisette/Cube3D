@@ -6,7 +6,7 @@
 /*   By: jdhallen <jdhallen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 15:14:17 by jdhallen          #+#    #+#             */
-/*   Updated: 2025/03/27 12:56:52 by jdhallen         ###   ########.fr       */
+/*   Updated: 2025/03/31 15:38:28 by jdhallen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ void	clean_game(t_game *game)
 		free(game->map_path);
 	if (game->map_fd != ERROR)
 		close(game->map_fd);
+	if (game->renderer)
+		free(game->renderer);
 	free_img(game->session, game->texture.ceiling_image);
 	free_img(game->session, game->texture.floor_image);
 }

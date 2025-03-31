@@ -6,7 +6,7 @@
 /*   By: jdhallen <jdhallen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 12:50:21 by jdhallen          #+#    #+#             */
-/*   Updated: 2025/03/26 16:03:43 by jdhallen         ###   ########.fr       */
+/*   Updated: 2025/03/31 15:40:08 by jdhallen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,13 @@ int	init(t_game *game)
 	game->texture.wall_texture[EA] = NULL;
 	game->texture.floor_color = 0x0;
 	game->texture.ceiling_color = 0x0;
+	game->renderer = NULL;
 	game->texture.floor_image = NULL;
 	game->texture.ceiling_image = NULL;
 	game->texture.wall_images = NULL;
 	game->start_map_line = 0;
 	game->error_in_walls = false;
+	game->fov = M_PI / 3;
 	return (TRUE);
 }
 
@@ -46,5 +48,6 @@ int	parsing(t_game *game, int argc, char **argv)
 	ft_printf(1, "Map ok\n");
 	if (!access_image(game))
 		return (ERROR);
+	find_map_limit(game);
 	return (TRUE);
 }

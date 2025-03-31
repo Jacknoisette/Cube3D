@@ -6,7 +6,7 @@
 /*   By: jdhallen <jdhallen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 13:13:39 by jdhallen          #+#    #+#             */
-/*   Updated: 2025/03/27 10:22:29 by jdhallen         ###   ########.fr       */
+/*   Updated: 2025/03/31 16:11:12 by jdhallen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,16 @@
 #  define SIZE 32
 # endif
 
-# ifndef FOV
-#  define FOV 90
+# ifndef M_PI
+# define M_PI 3.14159265358979323846
 # endif
 
 # ifndef WIDTH
-#  define WIDTH 1920
+#  define WIDTH 1920 / 1.5
 # endif
 
 # ifndef HEIGHT
-#  define HEIGHT 1080
+#  define HEIGHT 1080 / 1.5
 # endif
 
 //MAP
@@ -103,6 +103,33 @@ typedef enum e_info_texture
 
 //STRUCT
 
+typedef struct s_ray
+{
+	int		*vision_x;
+	int		*vision_y;
+	float	camera_x;
+	float	ray_dir_x;
+	float	ray_dir_y;
+	float	delta_dist_x;
+	float	delta_dist_y;
+	float	side_dist_x;
+	float	side_dist_y;
+	float	wall_distance;
+	int		ray;
+	int		map_x;
+	int		map_y;
+	int		prev_map_x;
+	int		prev_map_y;
+	int		step_x;
+	int		step_y;
+	int		hit;
+	int		side;
+	int		n_texture;
+	int		line_height;
+	int		draw_start;
+	int		draw_end;
+}	t_ray;
+
 typedef struct s_texture
 {
 	void	*ceiling_image;
@@ -121,9 +148,13 @@ typedef struct s_map
 
 typedef struct s_player
 {
-	double	x;
-	double	y;
-	double	angle;
+	float	x;
+	float	y;
+	float	angle;
+	float	dir_x;
+	float	dir_y;
+	float	plane_x;
+	float	plane_y;
 }	t_player;
 
 typedef struct s_game
@@ -131,6 +162,8 @@ typedef struct s_game
 	t_player	player;
 	t_map		**map;
 	t_texture	texture;
+	void		*renderer;
+	float		fov;
 	char		*map_path;
 	void		*session;
 	void		*window;
@@ -138,12 +171,15 @@ typedef struct s_game
 	int			keycode;
 	int			map_fd;
 	int			start_map_line;
+	int			max_width;
+	int			max_height;
 }	t_game;
 
 //UTILS
 void	clean_game(t_game *game);
 int		close_window(t_game *game);
 int		create_ceilling_and_floor(t_game *game);
+int		find_player(t_game *game, int *pos_i, int *pos_j, int *dir);
 
 //MAIN
 int		keycode_value(int keycode, t_game *game);
