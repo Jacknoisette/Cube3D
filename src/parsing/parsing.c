@@ -6,7 +6,7 @@
 /*   By: jdhallen <jdhallen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 12:50:21 by jdhallen          #+#    #+#             */
-/*   Updated: 2025/03/31 15:40:08 by jdhallen         ###   ########.fr       */
+/*   Updated: 2025/04/01 13:43:59 by jdhallen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,9 @@ int	init(t_game *game)
 	game->renderer = NULL;
 	game->texture.floor_image = NULL;
 	game->texture.ceiling_image = NULL;
-	game->texture.wall_images = NULL;
 	game->start_map_line = 0;
 	game->error_in_walls = false;
-	game->fov = M_PI / 3;
+	game->fov = M_PI / 5;
 	return (TRUE);
 }
 

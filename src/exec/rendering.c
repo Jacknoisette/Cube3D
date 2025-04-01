@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jdhallen <jdhallen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/31 13:19:03 by jdhallen          #+#    #+#             */
-/*   Updated: 2025/03/31 16:29:36 by jdhallen         ###   ########.fr       */
+/*   Created: 2025/04/01 14:00:57 by jdhallen          #+#    #+#             */
+/*   Updated: 2025/04/01 14:51:08 by jdhallen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,17 @@
 
 void display_map_wall(t_game *game, t_ray *ray)
 {
+	size_t	buf_size;
+	char *buffer;
 	int	i;
 	int	j;
 	int	k;
-
-	size_t buf_size = (game->max_height + 1) * (game->max_width + 1) * 64;
-    char *buffer = malloc(buf_size);
-    if (!buffer)
-        return;
-    buffer[0] = '\0';
 	
+	buf_size = (game->max_height + 1) * (game->max_width + 1) * 64;
+	buffer = malloc(buf_size);
+	 if (!buffer)
+		return ;
+	buffer[0] = '\0';
 	i = 0;
 	while (game->map[i] != NULL)
 	{
@@ -40,22 +41,24 @@ void display_map_wall(t_game *game, t_ray *ray)
 			}
 			if (i == game->player.y && j == game->player.x)
 				strcat(buffer, "\033[34m\033[1m");
-			char temp[16];
-            snprintf(temp, sizeof(temp), "%c\033[0m", game->map[i][j].type);
-            strcat(buffer, temp);
+			strcat(buffer, &game->map[i][j].type);
+			strcat(buffer, "\033[0m");
 			j++;
 		}
 		strcat(buffer, "\n");
 		i++;
 	}
-	printf("%s", buffer);
-    free(buffer);
 	i = 0;
+	printf("X:%i, Y:%i, R:%i\n", (int)game->player.x,
+		(int)game->player.y, (int)(90 *game->player.angle));
+	printf("%s", buffer);
+	free(buffer);
 	while (game->map[i] != NULL)
 	{
 		printf("\033[F\033[J");
 		i++;
 	}
+	printf("\033[F\033[J");
 }
 
 int	cast_ray(t_game *game, t_ray *ray)
@@ -107,11 +110,11 @@ int	cast_all_rays(t_game *game)
 int	rendering(t_game *game)
 {
 	t_image	img;
-	
+
 	free_img(game->session, game->renderer);
 	game->renderer = mlx_new_image(game->session, WIDTH, HEIGHT);
 	img.image_data = mlx_get_data_addr(game->renderer, &img.bpp,
-            &img.size_line, &img.endian);
+			&img.size_line, &img.endian);
 	create_imagef(game->renderer,
 		WIDTH, HEIGHT, game->texture.floor_color);
 	create_imagec(game->renderer, WIDTH, HEIGHT,

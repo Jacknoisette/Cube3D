@@ -6,26 +6,27 @@
 /*   By: jdhallen <jdhallen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 15:14:17 by jdhallen          #+#    #+#             */
-/*   Updated: 2025/03/31 15:38:28 by jdhallen         ###   ########.fr       */
+/*   Updated: 2025/04/01 15:22:45 by jdhallen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cube3d.h"
+#include "../exec/exec.h"
 
 int	keycode_value(int keycode, t_game *game)
 {
 	if (keycode == 119)
-		return (game->keycode = W_KEY, 0);
+		return (move_key(game ,W_KEY),0);
 	if (keycode == 115)
-		return (game->keycode = S_KEY, 0);
+		return (move_key(game ,S_KEY),0);
 	if (keycode == 97)
-		return (game->keycode = A_KEY, 0);
+		return (move_key(game ,A_KEY),0);
 	if (keycode == 100)
-		return (game->keycode = D_KEY, 0);
+		return (move_key(game ,D_KEY),0);
 	if (keycode == 65363)
-		return (game->keycode = RIGHT_ARROW_KEY, 0);
+		return (move_key(game ,RIGHT_KEY),0);
 	if (keycode == 65361)
-		return (game->keycode = LEFT_ARROW_KEY, 0);
+		return (move_key(game ,LEFT_KEY),0);
 	if (keycode == 65307)
 		return (close_window(game), 0);
 	return (game->keycode = NULL_KEY, 0);
@@ -42,16 +43,17 @@ void	clean_game(t_game *game)
 	{
 		if (game->texture.wall_texture[i])
 			free(game->texture.wall_texture[i]);
+		if (game->texture.wall_images[i])
+			free_img(game->session, game->texture.wall_images[i]);
 		i++;
 	}
 	if (game->map_path)
 		free(game->map_path);
 	if (game->map_fd != ERROR)
 		close(game->map_fd);
-	if (game->renderer)
-		free(game->renderer);
 	free_img(game->session, game->texture.ceiling_image);
 	free_img(game->session, game->texture.floor_image);
+	free_img(game->session, game->renderer);
 }
 
 int	close_window(t_game *game)

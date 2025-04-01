@@ -6,7 +6,7 @@
 /*   By: jdhallen <jdhallen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 15:31:40 by jdhallen          #+#    #+#             */
-/*   Updated: 2025/03/31 16:06:48 by jdhallen         ###   ########.fr       */
+/*   Updated: 2025/04/01 13:56:17 by jdhallen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ int	compute_distance(t_game *game, t_ray *ray)
 	else
 	{
 		ray->step_x = 1;
-		ray->side_dist_x = (ray->map_x + 1.0 - game->player.x) * ray->delta_dist_x;
+		ray->side_dist_x = (ray->map_x + 1.0 - game->player.x)
+			* ray->delta_dist_x;
 	}
 	if (ray->ray_dir_y < 0)
 	{
@@ -45,7 +46,8 @@ int	compute_distance(t_game *game, t_ray *ray)
 	else
 	{
 		ray->step_y = 1;
-		ray->side_dist_y = (ray->map_y + 1.0 - game->player.y) * ray->delta_dist_y;
+		ray->side_dist_y = (ray->map_y + 1.0 - game->player.y)
+			* ray->delta_dist_y;
 	}
 	return (TRUE);
 }
@@ -67,8 +69,8 @@ int	compute_dda(t_game *game, t_ray *ray)
 			ray->map_y += ray->step_y;
 			ray->side = 1;
 		}
-		if (ray->map_x < 0 || ray->map_x >= game->max_width||
-			ray->map_y < 0 || ray->map_y >= game->max_height)
+		if (ray->map_x < 0 || ray->map_x >= game->max_width
+			|| ray->map_y < 0 || ray->map_y >= game->max_height)
 		{
 			ray->hit = 1;
 			return (TRUE);
@@ -82,9 +84,11 @@ int	compute_dda(t_game *game, t_ray *ray)
 int	compute_wall_distance(t_game *game, t_ray *ray)
 {
 	if (ray->side == 0)
- 		ray->wall_distance = (ray->map_x - game->player.x + (1 - ray->step_x) / 2) / ray->ray_dir_x;
+		ray->wall_distance = (ray->map_x - game->player.x
+				+ (1 - ray->step_x) / 2) / ray->ray_dir_x;
 	else
-		ray->wall_distance = (ray->map_y - game->player.y + (1 - ray->step_y) / 2) / ray->ray_dir_y;
+		ray->wall_distance = (ray->map_y - game->player.y
+				+ (1 - ray->step_y) / 2) / ray->ray_dir_y;
 	if (ray->side == 0)
 	{
 		if (ray->ray_dir_x > 0)
@@ -111,11 +115,6 @@ int	compute_line_to_draw(t_game *game, t_ray *ray)
 	ray->draw_end = ray->line_height / 2 + HEIGHT / 2;
 	if (ray->draw_end >= HEIGHT)
 		ray->draw_end = HEIGHT - 1;
-	if (game->texture.floor_image == NULL)
-		return (ERROR);
-	if (ray->side == 0)
-		draw_vertical_line(game->renderer, ray->ray, ray->draw_start, ray->draw_end, 0xFF0000);
-	else
-		draw_vertical_line(game->renderer, ray->ray, ray->draw_start, ray->draw_end, 0x00FF00);
+	draw_vertical_line_img(game->renderer, ray, game);
 	return (TRUE);
 }

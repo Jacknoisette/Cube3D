@@ -6,7 +6,7 @@
 /*   By: jdhallen <jdhallen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 13:13:39 by jdhallen          #+#    #+#             */
-/*   Updated: 2025/03/31 16:11:12 by jdhallen         ###   ########.fr       */
+/*   Updated: 2025/04/01 15:16:05 by jdhallen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,15 @@
 # endif
 
 # ifndef M_PI
-# define M_PI 3.14159265358979323846
+#  define M_PI 3.14159265358979323846
 # endif
 
 # ifndef WIDTH
-#  define WIDTH 1920 / 1.5
+#  define WIDTH 1080
 # endif
 
 # ifndef HEIGHT
-#  define HEIGHT 1080 / 1.5
+#  define HEIGHT 1080
 # endif
 
 //MAP
@@ -79,13 +79,21 @@
 #  define EAST 'E'
 # endif
 
+//PLAYER
+
+# define ROT_MAX 360
+
+# define ROT_SPEED
+
 typedef enum e_move
 {
 	NULL_KEY,
-	W_KEY,
-	A_KEY,
-	S_KEY,
-	D_KEY,
+	W_KEY = 119,
+	A_KEY = 97,
+	S_KEY = 115,
+	D_KEY = 100,
+	LEFT_KEY = 65361,
+	RIGHT_KEY = 65363,
 	LEFT_ARROW_KEY,
 	RIGHT_ARROW_KEY,
 	ESC_KEY,
@@ -134,7 +142,7 @@ typedef struct s_texture
 {
 	void	*ceiling_image;
 	void	*floor_image;
-	void	**wall_images;
+	void	*wall_images[4];
 	char	*wall_texture[4];
 	int		floor_color;
 	int		ceiling_color;
