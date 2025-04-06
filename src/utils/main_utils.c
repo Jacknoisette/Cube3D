@@ -24,9 +24,9 @@ int	keycode_value(int keycode, t_game *game)
 	if (keycode == 100)
 		return (move_key(game ,D_KEY),0);
 	if (keycode == 65363)
-		return (move_key(game ,RIGHT_KEY),0);
+		return (rotate_player(game ,RIGHT_KEY),0);
 	if (keycode == 65361)
-		return (move_key(game ,LEFT_KEY),0);
+		return (rotate_player(game ,LEFT_KEY),0);
 	if (keycode == 65307)
 		return (close_window(game), 0);
 	return (game->keycode = NULL_KEY, 0);

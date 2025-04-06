@@ -28,7 +28,7 @@ int	main(int argc, char **argv)
 		return (clean_game(&game), ERROR);
 	mlx_hook(game.window, 17, 0, close_window, &game);
 	mlx_loop_hook(game.session, exec, &game);
-	mlx_key_hook(game.window, keycode_value, &game);
+	mlx_hook(game.window, 2, (1L << 0), keycode_value, &game);
 	mlx_loop(game.session);
 	return (close_window(&game), 0);
 }

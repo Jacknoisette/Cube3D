@@ -33,6 +33,7 @@ int		rendering(t_game *game);
 
 //PLAYER_MOVEMENT
 void	move_key(t_game *game, int input);
+void	rotate_player(t_game *game, int input);
 // int		player_move(t_game *game);
 
 //COMPUTE RENDERER

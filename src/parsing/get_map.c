@@ -30,6 +30,7 @@ void	display_info(t_game *game)
 		j = 0;
 		while (game->map[i][j].type != '\0')
 		{
+			//printf("type: %c",game->map[i][j].type);
 			if (game->map[i][j].in_player_map)
 				ft_printf(1, "\033[32m\033[1m");
 			if (!game->map[i][j].in_player_map && game->map[i][j].type == VOID)
