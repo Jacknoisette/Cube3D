@@ -13,24 +13,6 @@
 #include "../cube3d.h"
 #include "exec.h"
 
-//Ma fonction temporaire;
-// int	player_move(t_game *game)
-// {
-// 	if (game->keycode == W_KEY)
-// 		game->player.y -= 0.01;
-// 	else if (game->keycode == S_KEY)
-// 		game->player.y += 0.01;
-// 	else if (game->keycode == A_KEY)
-// 		game->player.x -= 0.01;
-// 	else if (game->keycode == D_KEY)
-// 		game->player.x += 0.01;
-// 	else if (game->keycode == LEFT_ARROW_KEY)
-// 		game->player.angle -= 0.005;
-// 	else if (game->keycode == RIGHT_ARROW_KEY)
-// 		game->player.angle += 0.005;
-// 	return (TRUE);
-// }
-
 int	is_wall(t_game *game, int new_x, int new_y)
 {
 	if (game->map[new_y][new_x].type == WALL)
@@ -74,12 +56,6 @@ void	move_key(t_game *game, int input)
 		return ;
 	game->player.x = new_x;
 	game->player.y = new_y;
-	printf("type: %c \n", game->map[(int)new_y][(int)new_x].type);
-	//if(!is_wall(game, new_x, new_y))
-	//{
-	//	game->player.x = new_x;
-	//	game->player.y = new_y;
-	//}
 }
 
 void	rotate_player(t_game *game, int input)
