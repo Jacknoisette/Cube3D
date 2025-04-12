@@ -31,13 +31,13 @@
 // 	return (TRUE);
 // }
 
-/*int	is_wall(t_game *game, int new_x, int new_y)
+int	is_wall(t_game *game, int new_x, int new_y)
 {
-	if (game->map[new_x][new_y].type == '1')
+	if (game->map[new_y][new_x].type == WALL)
 		return 0;
 	else
 		return 1;
-}*/
+}
 
 void	move_key(t_game *game, int input)
 {
@@ -70,12 +70,11 @@ void	move_key(t_game *game, int input)
 		new_x += cos(game->player.angle + (M_PI / 2) ) * 0.1;
 		new_y += sin(game->player.angle + (M_PI / 2) ) * 0.1;
 	}
-	//if (!is_wall(game,(int)new_x, (int)new_y))
-	//	return ;
+	if (!is_wall(game,(int)new_x, (int)new_y))
+		return ;
 	game->player.x = new_x;
 	game->player.y = new_y;
-	//printf("type: %c\n", game->map[(int)game->player.x]->type);
-	//printf("type: %c\n", game->map[(int)new_x][(int)new_y].type);
+	printf("type: %c \n", game->map[(int)new_y][(int)new_x].type);
 	//if(!is_wall(game, new_x, new_y))
 	//{
 	//	game->player.x = new_x;

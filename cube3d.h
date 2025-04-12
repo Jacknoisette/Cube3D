@@ -170,6 +170,7 @@ typedef struct s_game
 	t_player	player;
 	t_map		**map;
 	t_texture	texture;
+	//char		**grid;
 	void		*renderer;
 	float		fov;
 	char		*map_path;

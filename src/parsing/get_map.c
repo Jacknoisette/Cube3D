@@ -38,7 +38,7 @@ void	display_info(t_game *game)
 			ft_printf(1, "%c\033[0m", game->map[i][j].type);
 			j++;
 		}
-		ft_printf(1, "\n");
+		ft_printf(1, "%d\n",i);
 		i++;
 	}
 }

@@ -56,6 +56,7 @@ void display_map_wall(t_game *game, t_ray *ray)
 	while (game->map[i] != NULL)
 	{
 		printf("\033[F\033[J");
+		//printf("i:%d\n",i);
 		i++;
 	}
 	printf("\033[F\033[J");
