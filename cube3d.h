@@ -187,7 +187,7 @@ typedef struct s_game
 void	clean_game(t_game *game);
 int		close_window(t_game *game);
 int		create_ceilling_and_floor(t_game *game);
-int		find_player(t_game *game, int *pos_i, int *pos_j, int *dir);
+int		find_player(t_game *game, int *pos_i, int *pos_j, float *dir);
 
 //MAIN
 int		keycode_value(int keycode, t_game *game);

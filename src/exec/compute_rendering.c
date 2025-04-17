@@ -92,9 +92,9 @@ int	compute_wall_distance(t_game *game, t_ray *ray)
 	if (ray->side == 0)
 	{
 		if (ray->ray_dir_x > 0)
-			ray->n_texture = WE;
-		else
 			ray->n_texture = EA;
+		else
+			ray->n_texture = WE;
 	}
 	else
 	{

@@ -17,13 +17,14 @@ int	player_spawn_position(t_game *game)
 {
 	int	x;
 	int	y;
-	int	angle;
+	float	angle;
 
 	if (find_player(game, &y, &x, &angle) == ERROR)
 		return (ERROR);
 	game->player.x = (float)x;
 	game->player.y = (float)y;
-	game->player.angle = (float)(90 * angle);
+	game->player.angle = (float)(angle);
+	printf("player spawn angle: %f\n", game->player.angle);
 	return (TRUE);
 }
 

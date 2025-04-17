@@ -57,6 +57,7 @@ void	move_key(t_game *game, int input)
 		game->player.x = new_x;
 	if (!is_wall(game, (int)game->player.x, (int)new_y))
 		game->player.y = new_y;
+	printf("x: %f, y: %f\n", game->player.x, game->player.y);
 }
 
 void	rotate_player(t_game *game, int input)
@@ -69,4 +70,5 @@ void	rotate_player(t_game *game, int input)
 		game->player.angle += 2 * M_PI;
 	else if (game->player.angle > 2 * M_PI)
 		game->player.angle -= 2 * M_PI;
+	printf("ANGLE: %f\n", game->player.angle);
 }
