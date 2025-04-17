@@ -19,7 +19,7 @@ int	check_map(t_game *game, int mod)
 {
 	int	i;
 	int	j;
-	int	dir;
+	float	dir;
 
 	i = 0;
 	j = 0;
