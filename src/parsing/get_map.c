@@ -30,7 +30,6 @@ void	display_info(t_game *game)
 		j = 0;
 		while (game->map[i][j].type != '\0')
 		{
-			//printf("type: %c",game->map[i][j].type);
 			if (game->map[i][j].in_player_map)
 				ft_printf(1, "\033[32m\033[1m");
 			if (!game->map[i][j].in_player_map && game->map[i][j].type == VOID)
@@ -38,7 +37,7 @@ void	display_info(t_game *game)
 			ft_printf(1, "%c\033[0m", game->map[i][j].type);
 			j++;
 		}
-		ft_printf(1, "%d\n",i);
+		ft_printf(1, "\n");
 		i++;
 	}
 }
@@ -49,7 +48,6 @@ int	get_map(t_game *game)
 		return (FALSE);
 	if (get_map_parsing(game) == ERROR)
 		return (FALSE);
-	ft_printf(1, "Actually get_line is at line : %i\n", game->start_map_line);
 	if (check_map(game, 0) == ERROR)
 		return (FALSE);
 	display_info(game);

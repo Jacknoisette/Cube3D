@@ -101,10 +101,10 @@ typedef enum e_move
 
 typedef enum e_info_texture
 {
-	NO,
-	SO,
-	WE,
-	EA,
+	NO = 0,
+	SO = 1,
+	WE = 2,
+	EA = 3,
 	F,
 	C,
 }	t_info_texture;
@@ -170,7 +170,6 @@ typedef struct s_game
 	t_player	player;
 	t_map		**map;
 	t_texture	texture;
-	//char		**grid;
 	void		*renderer;
 	float		fov;
 	char		*map_path;

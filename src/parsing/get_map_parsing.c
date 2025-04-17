@@ -45,7 +45,7 @@ t_map	*create_line_map(char **line, int len_max)
 	if (map_line_temp == NULL)
 		return (free(*line), NULL);
 	i = 0;
-	while ((*line)[i] != '\0' && (*line)[i] != '\n')
+	while ((*line)[i] != '\0' && (*line)[i] != '\n' && i < len_max)
 	{
 		map_line_temp[i] = create_temp_map((*line)[i]);
 		i++;

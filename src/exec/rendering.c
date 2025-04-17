@@ -13,7 +13,7 @@
 #include "../cube3d.h"
 #include "exec.h"
 
-void display_map_wall(t_game *game, t_ray *ray)
+/*void display_map_wall(t_game *game, t_ray *ray)
 {
 	size_t	buf_size;
 	char *buffer;
@@ -56,11 +56,10 @@ void display_map_wall(t_game *game, t_ray *ray)
 	while (game->map[i] != NULL)
 	{
 		printf("\033[F\033[J");
-		//printf("i:%d\n",i);
 		i++;
 	}
 	printf("\033[F\033[J");
-}
+}*/
 
 int	cast_ray(t_game *game, t_ray *ray)
 {
@@ -100,7 +99,6 @@ int	cast_all_rays(t_game *game)
 		}
 		ray.ray++;
 	}
-	display_map_wall(game, &ray);
 	if (ray.vision_x)
 		free(ray.vision_x);
 	if (ray.vision_y)

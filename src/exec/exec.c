@@ -70,12 +70,7 @@ int	exec_init(t_game *game)
 
 int	exec(t_game *game)
 {
-	// player_move(game);
 	if (rendering(game) == ERROR)
 		return (ERROR);
 	return (TRUE);
 }
-
-// printf("Int Player : X %i,Y %i,R %i\n", x, y, 90 * angle);
-// printf("Float Player : X %f,Y %f,R %f\n", game->player.x,
-	// game->player.y, game->player.angle);

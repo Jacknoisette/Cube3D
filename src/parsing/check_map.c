@@ -26,12 +26,10 @@ int	check_map(t_game *game, int mod)
 	dir = 0;
 	if (check_map_char(game) == ERROR)
 		return (ERROR);
-	ft_printf(1, "Char ok\n");
 	if (mod)
 	{
 		if (find_player(game, &i, &j, &dir) == ERROR)
 			return (ERROR);
-		ft_printf(1, "Player ok\n");
 		if (check_map_around_player(game, i, j) == ERROR)
 			return (ERROR);
 	}
@@ -40,6 +38,5 @@ int	check_map(t_game *game, int mod)
 		if (check_map_wall(game) == ERROR)
 			return (ERROR);
 	}
-	ft_printf(1, "Wall ok\n");
 	return (TRUE);
 }
