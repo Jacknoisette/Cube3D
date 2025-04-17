@@ -16,9 +16,9 @@
 int	is_wall(t_game *game, int new_x, int new_y)
 {
 	if (game->map[new_y][new_x].type == WALL)
-		return (0);
-	else
 		return (1);
+	else
+		return (0);
 }
 
 static void	update_move(int input, t_game *game, float *new_x, float *new_y)
@@ -53,17 +53,14 @@ void	move_key(t_game *game, int input)
 	new_x = game->player.x;
 	new_y = game->player.y;
 	update_move(input, game, &new_x, &new_y);
-	if (!is_wall(game, (int)new_x, (int)new_y))
-		return ;
-	game->player.x = new_x;
-	game->player.y = new_y;
+	if (!is_wall(game, (int)new_x, (int)game->player.y))
+		game->player.x = new_x;
+	if (!is_wall(game, (int)game->player.x, (int)new_y))
+		game->player.y = new_y;
 }
 
 void	rotate_player(t_game *game, int input)
 {
-	float	angle;
-
-	angle = game->player.angle;
 	if (input == LEFT_KEY)
 		game->player.angle += -0.1 ;
 	else if (input == RIGHT_KEY)
