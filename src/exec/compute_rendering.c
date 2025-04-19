@@ -99,9 +99,9 @@ int	compute_wall_distance(t_game *game, t_ray *ray)
 	else
 	{
 		if (ray->ray_dir_y > 0)
-			ray->n_texture = NO;
-		else
 			ray->n_texture = SO;
+		else
+			ray->n_texture = NO;
 	}
 	return (TRUE);
 }

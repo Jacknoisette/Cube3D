@@ -103,9 +103,9 @@ int	find_player(t_game *game, int *pos_i, int *pos_j, float *dir)
 		while (game->map[i][j].type != '\0')
 		{
 			if (game->map[i][j].type == NORTH)
-				return (*pos_i = i, *pos_j = j, *dir = 1.57079, TRUE);
-			if (game->map[i][j].type == SOUTH)
 				return (*pos_i = i, *pos_j = j, *dir = 4.71238, TRUE);
+			if (game->map[i][j].type == SOUTH)
+				return (*pos_i = i, *pos_j = j, *dir = 1.57079, TRUE);
 			if (game->map[i][j].type == WEST)
 				return (*pos_i = i, *pos_j = j, *dir = M_PI, TRUE);
 			if (game->map[i][j].type == EAST)

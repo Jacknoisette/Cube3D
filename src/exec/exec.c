@@ -24,7 +24,6 @@ int	player_spawn_position(t_game *game)
 	game->player.x = (float)x;
 	game->player.y = (float)y;
 	game->player.angle = (float)(angle);
-	printf("player spawn angle: %f\n", game->player.angle);
 	return (TRUE);
 }
 

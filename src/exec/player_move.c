@@ -62,7 +62,7 @@ void	move_key(t_game *game, int input)
 void	rotate_player(t_game *game, int input)
 {
 	if (input == LEFT_KEY)
-		game->player.angle += -0.1 ;
+		game->player.angle -= 0.1 ;
 	else if (input == RIGHT_KEY)
 		game->player.angle += 0.1;
 	if (game->player.angle < 0)
