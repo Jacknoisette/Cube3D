@@ -6,7 +6,7 @@
 /*   By: jdhallen <jdhallen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 15:05:40 by jdhallen          #+#    #+#             */
-/*   Updated: 2025/04/01 15:28:05 by jdhallen         ###   ########.fr       */
+/*   Updated: 2025/04/22 10:46:39 by jdhallen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 int	player_spawn_position(t_game *game)
 {
-	int	x;
-	int	y;
+	int		x;
+	int		y;
 	float	angle;
 
 	if (find_player(game, &y, &x, &angle) == ERROR)

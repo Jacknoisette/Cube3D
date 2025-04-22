@@ -1,7 +1,7 @@
-SO texture/wall.xpm
-WE texture/wall.xpm
-NO texture/wall.xpm
-EA texture/wall.xpm
+NO texture/bluewall.xpm
+SO texture/yellowwall.xpm
+WE texture/greenwall.xpm
+EA texture/orangewall.xpm
 F 50,200,200
 C 2,100,0
 

@@ -1,9 +1,9 @@
-NO texture/brick.xpm
-SO texture/brick.xpm
-WE texture/stone.xpm
-EA texture/stone.xpm
-F 255,255,255
+NO texture/bluewall.xpm
+SO texture/yellowwall.xpm
+WE texture/greenwall.xpm
 C 175,100,50
+EA texture/orangewall.xpm
+F 255,255,255
 
    111111
 11110000111111111

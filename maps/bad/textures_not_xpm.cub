@@ -1,7 +1,8 @@
-NO texture/bluewall.xpm
+NO texture/bluewall.xp
 SO texture/yellowwall.xpm
 WE texture/greenwall.xpm
-EA texture/
+EA texture/orangewall.xpm
+
 F 20,20,20
 C 200,200,200
 

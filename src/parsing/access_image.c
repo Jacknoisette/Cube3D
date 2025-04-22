@@ -6,12 +6,30 @@
 /*   By: jdhallen <jdhallen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:54:34 by codespace         #+#    #+#             */
-/*   Updated: 2025/04/01 12:26:36 by jdhallen         ###   ########.fr       */
+/*   Updated: 2025/04/22 11:05:36 by jdhallen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cube3d.h"
 #include "parsing.h"
+
+int	check_image_type(t_game *game, int i)
+{
+	int	j;
+
+	j = 0;
+	while (game->texture.wall_texture[i][j] != '\0')
+	{
+		if (game->texture.wall_texture[i][j] == '.'
+			&& game->texture.wall_texture[i][j + 1] == 'x'
+			&& game->texture.wall_texture[i][j + 2] == 'p'
+			&& game->texture.wall_texture[i][j + 3] == 'm'
+			&& game->texture.wall_texture[i][j + 4] == '\0')
+			return (TRUE);
+		j++;
+	}
+	return (ft_printf(2, "Error\nWall texture not xpm\n"), FALSE);
+}
 
 int	access_image(t_game *game)
 {
@@ -25,6 +43,8 @@ int	access_image(t_game *game)
 		if (fd == -1)
 			return (ft_printf(2, "Error\nWall texture not found\n"), FALSE);
 		close(fd);
+		if (check_image_type(game, i) == FALSE)
+			return (FALSE);
 		i++;
 	}
 	return (TRUE);

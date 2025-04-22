@@ -6,7 +6,7 @@
 /*   By: jdhallen <jdhallen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 16:09:27 by jdhallen          #+#    #+#             */
-/*   Updated: 2025/04/01 15:27:47 by jdhallen         ###   ########.fr       */
+/*   Updated: 2025/04/22 11:06:57 by jdhallen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,23 +25,23 @@ static void	update_move(int input, t_game *game, float *new_x, float *new_y)
 {
 	if (input == W_KEY)
 	{
-		*new_x += cos(game->player.angle) * 0.2;
-		*new_y += sin(game->player.angle) * 0.2;
+		*new_x += cos(game->player.angle) * 0.1;
+		*new_y += sin(game->player.angle) * 0.1;
 	}
 	else if (input == A_KEY)
 	{
-		*new_x += cos(game->player.angle - (M_PI / 2)) * 0.2;
-		*new_y += sin(game->player.angle - (M_PI / 2)) * 0.2;
+		*new_x += cos(game->player.angle - (M_PI / 2)) * 0.1;
+		*new_y += sin(game->player.angle - (M_PI / 2)) * 0.1;
 	}
 	else if (input == S_KEY)
 	{
-		*new_x -= cos(game->player.angle) * 0.2;
-		*new_y -= sin(game->player.angle) * 0.2;
+		*new_x -= cos(game->player.angle) * 0.1;
+		*new_y -= sin(game->player.angle) * 0.1;
 	}
 	else if (input == D_KEY)
 	{
-		*new_x += cos(game->player.angle + (M_PI / 2)) * 0.2;
-		*new_y += sin(game->player.angle + (M_PI / 2)) * 0.2;
+		*new_x += cos(game->player.angle + (M_PI / 2)) * 0.1;
+		*new_y += sin(game->player.angle + (M_PI / 2)) * 0.1;
 	}
 }
 
