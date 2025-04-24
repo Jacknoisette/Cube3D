@@ -6,7 +6,7 @@
 /*   By: jdhallen <jdhallen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 13:12:09 by jdhallen          #+#    #+#             */
-/*   Updated: 2025/03/27 13:00:31 by jdhallen         ###   ########.fr       */
+/*   Updated: 2025/04/22 10:35:44 by jdhallen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,6 @@ int	get_map_path(t_game *game, int argc, char **argv)
 		return (FALSE);
 	game->map_fd = open(game->map_path, O_RDONLY);
 	if (game->map_fd == ERROR)
-		return (FALSE);
+		return (ft_printf(2, "Error\nMap does not exist\n"), FALSE);
 	return (TRUE);
 }

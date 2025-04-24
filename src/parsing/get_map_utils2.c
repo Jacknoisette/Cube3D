@@ -1,42 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_map.c                                        :+:      :+:    :+:   */
+/*   get_map_utils2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jdhallen <jdhallen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/25 14:16:15 by codespace         #+#    #+#             */
-/*   Updated: 2025/04/22 10:46:23 by jdhallen         ###   ########.fr       */
+/*   Created: 2025/03/31 14:05:01 by jdhallen          #+#    #+#             */
+/*   Updated: 2025/03/31 14:37:47 by jdhallen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cube3d.h"
 #include "parsing.h"
 
-// 1 is to check the map around player
-// 0 is to check all the map
-int	check_map(t_game *game, int mod)
+int	find_map_limit(t_game *game)
 {
-	int		i;
-	int		j;
-	float	dir;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
-	dir = 0;
-	if (check_map_char(game) == ERROR)
-		return (ERROR);
-	if (mod)
-	{
-		if (find_player(game, &i, &j, &dir) == ERROR)
-			return (ERROR);
-		if (check_map_around_player(game, i, j) == ERROR)
-			return (ERROR);
-	}
-	else
-	{
-		if (check_map_wall(game) == ERROR)
-			return (ERROR);
-	}
+	while (game->map[i][j].type != '\0')
+		j++;
+	while (game->map[i] != NULL)
+		i++;
+	game->max_width = j;
+	game->max_height = i;
 	return (TRUE);
 }

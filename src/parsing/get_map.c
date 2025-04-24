@@ -6,7 +6,7 @@
 /*   By: jdhallen <jdhallen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 13:15:45 by jdhallen          #+#    #+#             */
-/*   Updated: 2025/03/26 16:24:11 by jdhallen         ###   ########.fr       */
+/*   Updated: 2025/04/23 13:45:00 by jdhallen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ int	get_map(t_game *game)
 		return (FALSE);
 	if (get_map_parsing(game) == ERROR)
 		return (FALSE);
-	ft_printf(1, "Actually get_line is at line : %i\n", game->start_map_line);
 	if (check_map(game, 0) == ERROR)
 		return (FALSE);
 	display_info(game);
