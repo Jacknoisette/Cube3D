@@ -61,6 +61,23 @@ int	get_len(char *line)
 	return (i - start);
 }
 
+int	atoi_for_rbg(char *color_group)
+{
+	int	i;
+	i = 0;
+	if (((color_group[0] == '-') && (color_group[1] == '0')) && color_group[2] == '\0')
+		return (1);
+	if (((color_group[0] == '+') && ft_isdigit(color_group[1])))
+		i += 1;
+	while (color_group[i])
+	{
+		if (ft_isdigit(color_group[i]) == 0)
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 int	check_rgb(char **color_group, int *rgb)
 {
 	int		color;
@@ -71,7 +88,10 @@ int	check_rgb(char **color_group, int *rgb)
 	{
 		if (color_group[i] == NULL)
 			return (ft_printf(2, "Error\nWrong Color\n"), ERROR);
-		rgb[i] = ft_atoi(color_group[i]);
+		if (atoi_for_rbg(color_group[i]))
+			rgb[i] = ft_atoi(color_group[i]);
+		else
+			return (ft_printf(2, "Error\nWrong Color\n"), ERROR);
 		if (rgb[i] < 0 || rgb[i] > 255)
 			return (ft_printf(2, "Error\nWrong Color\n"), ERROR);
 		i++;
