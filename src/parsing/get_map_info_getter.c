@@ -6,7 +6,7 @@
 /*   By: jdhallen <jdhallen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 14:07:09 by jdhallen          #+#    #+#             */
-/*   Updated: 2025/03/26 16:20:04 by jdhallen         ###   ########.fr       */
+/*   Updated: 2025/04/25 09:52:42 by jdhallen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,13 +65,17 @@ int	check_rgb(char **color_group, int *rgb)
 {
 	int		color;
 	int		i;
+	int		error;
 
 	i = 0;
 	while (i < 3)
 	{
+		error = 0;
 		if (color_group[i] == NULL)
 			return (ft_printf(2, "Error\nWrong Color\n"), ERROR);
-		rgb[i] = ft_atoi(color_group[i]);
+		rgb[i] = ft_newatoi(color_group[i], &error);
+		if (error == -1)
+			return (ft_printf(2, "Error\nWrong Color\n"), ERROR);
 		if (rgb[i] < 0 || rgb[i] > 255)
 			return (ft_printf(2, "Error\nWrong Color\n"), ERROR);
 		i++;

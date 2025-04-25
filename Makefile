@@ -6,7 +6,7 @@
 #    By: jdhallen <jdhallen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/15 09:01:08 by tgoudman          #+#    #+#              #
-#    Updated: 2025/03/24 16:04:03 by jdhallen         ###   ########.fr        #
+#    Updated: 2025/04/23 13:20:22 by jdhallen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -I$(LIBFT_DIR)
 LFLAGS = -L$(LIBFT_DIR) -lft -L$(MLX_DIR) -lmlx -lXext -lX11 -lm -lz
 OBJ_DIR = build
-NAME = cube3d
+NAME = cub3d
 LIBFT_DIR = Libft
 MLX_DIR = minilbx
 
@@ -36,7 +36,7 @@ $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LFLAGS)
 
 $(OBJ_DIR)/%.o: %.c | $(OBJ_DIR)
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $<  -g -o $@
 
 clean:
 	@$(MAKE) -C $(LIBFT_DIR) clean

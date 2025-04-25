@@ -90,7 +90,7 @@ int	move_in_file(t_game *game, int temp_map_fd, int *file_len, int *len_max)
 	return (TRUE);
 }
 
-int	find_player(t_game *game, int *pos_i, int *pos_j, int *dir)
+int	find_player(t_game *game, int *pos_i, int *pos_j, float *dir)
 {
 	int	i;
 	int	j;
@@ -103,13 +103,13 @@ int	find_player(t_game *game, int *pos_i, int *pos_j, int *dir)
 		while (game->map[i][j].type != '\0')
 		{
 			if (game->map[i][j].type == NORTH)
-				return (*pos_i = i, *pos_j = j, *dir = NO, TRUE);
+				return (*pos_i = i, *pos_j = j, *dir = 4.71238, TRUE);
 			if (game->map[i][j].type == SOUTH)
-				return (*pos_i = i, *pos_j = j, *dir = SO, TRUE);
+				return (*pos_i = i, *pos_j = j, *dir = 1.57079, TRUE);
 			if (game->map[i][j].type == WEST)
-				return (*pos_i = i, *pos_j = j, *dir = WE, TRUE);
+				return (*pos_i = i, *pos_j = j, *dir = M_PI, TRUE);
 			if (game->map[i][j].type == EAST)
-				return (*pos_i = i, *pos_j = j, *dir = EA, TRUE);
+				return (*pos_i = i, *pos_j = j, *dir = 0, TRUE);
 			j++;
 		}
 		i++;
