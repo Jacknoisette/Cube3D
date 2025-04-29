@@ -6,7 +6,7 @@
 /*   By: jdhallen <jdhallen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 14:57:42 by codespace         #+#    #+#             */
-/*   Updated: 2025/03/26 16:30:20 by jdhallen         ###   ########.fr       */
+/*   Updated: 2025/04/29 10:12:29 by jdhallen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,8 +95,7 @@ int	check_map_wall(t_game *game)
 		while (game->map[i][j].type != '\0')
 		{
 			if (check_map_wall_verify(game, i, j) == ERROR)
-				return (ft_printf(2, "Error\nInvalid Wall x[%i],y[%i]\n"
-						, i, j), ERROR);
+				return (ERROR);
 			j++;
 		}
 		i++;

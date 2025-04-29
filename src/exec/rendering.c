@@ -6,60 +6,59 @@
 /*   By: jdhallen <jdhallen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 14:00:57 by jdhallen          #+#    #+#             */
-/*   Updated: 2025/04/25 09:56:32 by jdhallen         ###   ########.fr       */
+/*   Updated: 2025/04/29 11:22:57 by jdhallen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cube3d.h"
 #include "exec.h"
 
-void display_map_wall(t_game *game, t_ray *ray)
-{
-	size_t	buf_size;
-	char *buffer;
-	int	i;
-	int	j;
-	int	k;
-	
-	buf_size = (game->max_height + 1) * (game->max_width + 1) * 64;
-	buffer = malloc(buf_size);
-	 if (!buffer)
-		return ;
-	buffer[0] = '\0';
-	i = 0;
-	while (game->map[i] != NULL)
-	{
-		j = 0;
-		while (game->map[i][j].type != '\0')
-		{
-			k = 0;
-			while (k < WIDTH)
-			{
-				if (i == ray->vision_y[k] && j == ray->vision_x[k])
-					strcat(buffer, "\033[32m\033[1m");
-				k++;
-			}
-			if (i == (int)game->player.y && j == (int)game->player.x)
-				strcat(buffer, "\033[34m\033[1m");
-			strcat(buffer, &game->map[i][j].type);
-			strcat(buffer, "\033[0m");
-			j++;
-		}
-		strcat(buffer, "\n");
-		i++;
-	}
-	i = 0;
-	printf("X:%i, Y:%i, R:%i\n", (int)game->player.x,
-		(int)game->player.y, (int)(90 *game->player.angle));
-	printf("%s", buffer);
-	free(buffer);
-	while (game->map[i] != NULL)
-	{
-		printf("\033[F\033[J");
-		i++;
-	}
-	printf("\033[F\033[J");
-}
+// void display_map_wall(t_game *game, t_ray *ray)
+// {
+// 	size_t	buf_size;
+// 	char *buffer;
+// 	int	i;
+// 	int	j;
+// 	int	k;
+// 	buf_size = (game->max_height + 1) * (game->max_width + 1) * 64;
+// 	buffer = malloc(buf_size);
+// 	 if (!buffer)
+// 		return ;
+// 	buffer[0] = '\0';
+// 	i = 0;
+// 	while (game->map[i] != NULL)
+// 	{
+// 		j = 0;
+// 		while (game->map[i][j].type != '\0')
+// 		{
+// 			k = 0;
+// 			while (k < WIDTH)
+// 			{
+// 				if (i == ray->vision_y[k] && j == ray->vision_x[k])
+// 					strcat(buffer, "\033[32m\033[1m");
+// 				k++;
+// 			}
+// 			if (i == (int)game->player.y && j == (int)game->player.x)
+// 				strcat(buffer, "\033[34m\033[1m");
+// 			strcat(buffer, &game->map[i][j].type);
+// 			strcat(buffer, "\033[0m");
+// 			j++;
+// 		}
+// 		strcat(buffer, "\n");
+// 		i++;
+// 	}
+// 	i = 0;
+// 	printf("X:%i, Y:%i, R:%i\n", (int)game->player.x,
+// 		(int)game->player.y, (int)(90 *game->player.angle));
+// 	printf("%s", buffer);
+// 	free(buffer);
+// 	while (game->map[i] != NULL)
+// 	{
+// 		printf("\033[F\033[J");
+// 		i++;
+// 	}
+// 	printf("\033[F\033[J");
+// }
 
 int	cast_ray(t_game *game, t_ray *ray)
 {
@@ -99,13 +98,13 @@ int	cast_all_rays(t_game *game)
 		}
 		ray.ray++;
 	}
-	display_map_wall(game, &ray);
 	if (ray.vision_x)
 		free(ray.vision_x);
 	if (ray.vision_y)
 		free(ray.vision_y);
 	return (TRUE);
 }
+// display_map_wall(game, &ray);
 
 int	rendering(t_game *game)
 {
